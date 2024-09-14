@@ -34,6 +34,12 @@ function MainNavigation() {
               <button onClick={logoutHandler}>Logout</button>
             </li>
           )}
+
+           {session && (
+              <li>
+                <Link href='/all-products'>All Products</Link>
+              </li>
+            )}
         </ul>
       </nav>
     </header>

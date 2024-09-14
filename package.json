@@ -9,12 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.651.0",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^5.3.3",
+    "formidable": "^3.5.1",
+    "formidable-serverless": "^1.1.1",
     "mongodb": "^6.8.1",
+    "mongoose": "^8.6.2",
+    "multiparty": "^4.2.3",
     "next": "14.2.9",
     "next-auth": "^4.24.7",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
+    "sharp": "^0.33.5",
+    "swr": "^2.2.5",
+    "uuid": "^10.0.0"
   },
   "devDependencies": {
     "eslint": "^8",
