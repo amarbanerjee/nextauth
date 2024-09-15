@@ -6,13 +6,13 @@ import { useRouter } from 'next/router';
 import classes from './auth-form.module.css';
 import NotificationContext from '@/store/notification-context';
 
-async function createUser(email, password) {
+async function createUser(email, password,username) {
 
   
 
   const response = await fetch('/api/auth/signup', {
     method: 'POST',
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, password,username }),
     headers: {
       'Content-Type': 'application/json',
     },
@@ -33,6 +33,7 @@ function AuthForm() {
   const notificationCtx = useContext(NotificationContext);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
+  const usernameInputRef = useRef();
 
   const [isLogin, setIsLogin] = useState(true);
   const router = useRouter();
@@ -58,7 +59,7 @@ function AuthForm() {
 
       if (!result.error) {
         // set some auth state
-        router.replace('/profile');
+        router.replace('/chat');
 
         notificationCtx.showNotification({
           title: 'Successfully Login !!',
@@ -75,7 +76,8 @@ function AuthForm() {
       }
     } else {
       try {
-        const result = await createUser(enteredEmail, enteredPassword);
+        const enteredUsername = usernameInputRef.current.value;
+        const result = await createUser(enteredEmail, enteredPassword,enteredUsername);
         console.log(result);
 
         notificationCtx.showNotification({
@@ -93,6 +95,12 @@ function AuthForm() {
     <section className={classes.auth}>
       <h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
       <form onSubmit={submitHandler}>
+
+        {!isLogin && <div className={classes.control}>
+          <label htmlFor='username'>Username</label>
+          <input type='text' id='username' required ref={usernameInputRef} />
+        </div>}
+
         <div className={classes.control}>
           <label htmlFor='email'>Your Email</label>
           <input type='email' id='email' required ref={emailInputRef} />

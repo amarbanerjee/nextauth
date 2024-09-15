@@ -2,7 +2,8 @@ import { getSession } from 'next-auth/react';
 
 import UserProfile from '../components/profile/user-profile';
 
-function ProfilePage() {
+function ProfilePage({session}) {
+  //console.log(session.user.email);
   return <UserProfile />;
 }
 

@@ -29,6 +29,13 @@ function MainNavigation() {
               <Link href='/profile'>Profile</Link>
             </li>
           )}
+
+          {session && (
+            <li>
+              <Link href='/chat'>Chat Room</Link>
+            </li>
+          )}
+
           {session && (
             <li>
               <button onClick={logoutHandler}>Logout</button>
