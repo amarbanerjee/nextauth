@@ -15,8 +15,12 @@ export default function Chat({session}) {
   //console.log(session);
 
   let userName = "Test";
+  try{
   if(session.userData){
     userName = session.userData.username;
+  }
+}catch(error){
+      //console.log(error)
   }
    
 
