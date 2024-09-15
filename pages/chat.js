@@ -14,7 +14,7 @@ export default function Chat({session}) {
 
   //console.log(session);
 
-  let userName = session.email;
+  let userName = "Test";
   if(session.userData.username){
     userName = session.userData.username;
   }
