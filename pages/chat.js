@@ -12,9 +12,13 @@ export default function Chat({session}) {
   //const [messages, setMessages] = useState([]);
   const { messages, setMessages } = useContext(Message_data);
 
-  console.log(session);
+  //console.log(session);
 
-  const userName = session.userData.username;
+  let userName = session.email;
+  if(session.userData.username){
+    userName = session.userData.username;
+  }
+   
 
   useEffect(() => {
     socket.on('message', (msg) => {
